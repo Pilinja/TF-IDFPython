@@ -5,7 +5,10 @@ from collections import Counter
 firstDoc = 'The game of life is a game of everlasting learning.'
 secondDoc = 'The unexamined life is not worth living.'
 thirdDoc = 'Never stop learning.'
+ignoredChar = "."
 
+
+# split documents
 
 def splitDoc(doc):
 
@@ -16,7 +19,7 @@ def splitDoc(doc):
         for j in i:
             allDoc = allDoc + j
 
-    allDoc = allDoc.replace(".", " ")
+    allDoc = allDoc.replace(ignoredChar, " ")
     print(allDoc)
     return allDoc
 
