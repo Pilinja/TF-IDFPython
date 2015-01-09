@@ -6,7 +6,22 @@ firstDoc = 'The game of life is a game of everlasting learning.'
 secondDoc = 'The unexamined life is not worth living.'
 thirdDoc = 'Never stop learning.'
 
-allDoc = firstDoc, secondDoc, thirdDoc
+
+def splitDoc(doc):
+
+    allDoc = ''
+
+    for i in doc:
+        i = i.lower()
+        for j in i:
+            allDoc = allDoc + j
+
+    allDoc = allDoc.replace(".", " ")
+    print(allDoc)
+    return allDoc
+
+docs = (firstDoc, secondDoc, thirdDoc)
+splitDoc(docs)
 
 # TF
 
@@ -26,3 +41,4 @@ for i in (firstDoc, secondDoc, thirdDoc):
     print(termFrequency(i))
 
 # IDF
+
