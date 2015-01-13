@@ -8,7 +8,6 @@ secondDoc = 'The unexamined life is not worth living.'
 thirdDoc = 'Never stop learning.'
 ignoredChar = "."
 
-
 # split documents
 
 def splitDoc(doc):
@@ -21,7 +20,7 @@ def splitDoc(doc):
             allDoc = allDoc + j
 
     allDoc = allDoc.replace(ignoredChar, " ")
-    print(allDoc)
+    # print(allDoc)
     return allDoc
 
 docs = (firstDoc, secondDoc, thirdDoc)
@@ -41,8 +40,6 @@ def termFrequency(doc):
 
     return docDict
 
-for i in (firstDoc, secondDoc, thirdDoc):
-    print(termFrequency(i))
 
 # IDF
 
@@ -75,6 +72,31 @@ def idfForDoc(docs):
         arrayOfResults.append(docDict)
     return arrayOfResults
 
-a = (firstDoc, secondDoc, thirdDoc)
-i = idfForDoc(a)
-print(i)
+# TF-IDF
+
+def tfidf(doc, docs):
+
+    tf = termFrequency(doc)
+    idf = idfForDoc(docs)
+
+    docSplit = doc.lower().split()
+    docDict = Counter(docSplit)
+
+    arrayOfResults = []
+    for i in range(0, 3):
+        idfTemporary = idf[i]
+        for key, value in docDict.iteritems():
+            value = float(tf[key]) * idfTemporary[key]
+            docDict[key] = value
+
+        arrayOfResults.append(docDict)
+
+    return arrayOfResults
+
+
+
+for i in (firstDoc, secondDoc, thirdDoc):
+    tfidf(i, docs)
+    print(tfidf(i, docs))
+
+
